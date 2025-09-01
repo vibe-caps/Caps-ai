@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Caps Mobile",
+    "slug": "caps-mobile",
+    "scheme": "caps",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "sdkVersion": "51.0.0"
+  }
+}

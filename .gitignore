@@ -1,0 +1,58 @@
+# Node
+node_modules/
+.pnp.cjs
+.pnp.loader.mjs
+.pnpm-store/
+
+# pnpm
+pnpm-lock.yaml
+
+# Turbo
+.turbo/
+
+# Next
+.next/
+.next-static/
+out/
+.vercel/
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Build artifacts
+dist/
+build/
+coverage/
+
+# Docker
+*.local
+.docker/
+
+# CLI
+cli/bin/
+cli/dist/
+
+# Artifacts
+artifacts/
+
+# Terraform
+infra/terraform/**/.terraform/
+infra/terraform/**/.terraform.lock.hcl
