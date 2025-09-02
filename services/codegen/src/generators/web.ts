@@ -21,7 +21,7 @@ async function zipFolder(src: string, destZip: string) {
     const output = fs.createWriteStream(destZip);
     const archive = archiver("zip", { zlib: { level: 9 } });
     output.on("close", () => resolve());
-    archive.on("error", (err) => reject(err));
+    archive.on("error", (err: unknown) => reject(err as Error));
     archive.pipe(output);
     archive.directory(src, false);
     archive.finalize();
