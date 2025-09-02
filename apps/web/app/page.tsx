@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@caps/ui";
 
-export default function MarketingPage() {
+export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center gap-6 p-10">
       <h1 className="text-5xl font-bold">Caps AI</h1>
