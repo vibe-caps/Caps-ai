@@ -20,6 +20,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "tsx": "^4.11.0",
     "typescript": "^5.8.3"
   }
