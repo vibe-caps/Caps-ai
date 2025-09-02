@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, "scout/**" ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Enable pnpm
+        run: corepack enable && corepack prepare pnpm@9.1.0 --activate
+      - name: Install deps
+        run: pnpm install --frozen-lockfile=false
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Build
+        run: pnpm build
+      - name: Build CLI (linux-amd64)
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+      - name: CLI build
+        run: |
+          cd cli && make build

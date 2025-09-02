@@ -1,0 +1,28 @@
+name: Deploy Web
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'apps/web/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Enable pnpm
+        run: corepack enable && corepack prepare pnpm@9.1.0 --activate
+      - name: Install
+        run: pnpm install --frozen-lockfile=false
+      - name: Build web
+        run: pnpm --filter @caps/web build
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: npx vercel --token $VERCEL_TOKEN --cwd apps/web --prod --confirm
