@@ -1,4 +1,4 @@
-import shared from "@caps/config/tailwind/tailwind.config";
+import shared from "../../packages/config/tailwind/tailwind.config";
 export default {
   ...shared,
   content: [
