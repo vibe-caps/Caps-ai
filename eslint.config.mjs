@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import reactPlugin from 'eslint-plugin-react';
+import globals from 'globals';
 
 export default [
   {
@@ -22,6 +23,10 @@ export default [
       parser: tsParser,
       ecmaVersion: 2022,
       sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
@@ -30,6 +35,8 @@ export default [
     rules: {
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'react/react-in-jsx-scope': 'off',
+      // TS handles undefined identifiers; also fetch is global in browser/Node 18+
+      'no-undef': 'off',
     },
     settings: { react: { version: 'detect' } },
   },
